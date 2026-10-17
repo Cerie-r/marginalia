@@ -100,7 +100,8 @@ class Turn:
     outline: str = ''             # skip / delta / full / empty
     focus: str = ''
     note_id: object = None
-    echo_seg: object = None
+    echo_seg: object = None       # 回顾那一轮：她刚读完的那一段
+    echo_segs: tuple = ()         # 这一次一起回顾的几段（更早没回成的并进来）
     gave_text: bool = False
     recall_lines: int = 0
 
@@ -161,8 +162,9 @@ class Room:
 
     def turn_page(self, idx):
         """翻页。只记读到哪，不调模型——她不划句子、不问我，我不出现。
-        刚从上一段翻进下一段时，返回那一段的回顾（echo），要不要现在发由界面定；
-        叫过、还没回成的，她在这一段里再翻页时还会返回。跳着翻过去的段不算读过，不叫。"""
+        刚从上一段翻进下一段，那一段就欠她一次回头看：返回它（echo），要不要现在发由界面定。
+        没回成的，她再翻页时还会返回；一直没回成、她又读完了下一段，两段并成一次。
+        跳着翻过去的段不算读过，不叫。"""
         s, bid, size = self.store, self.bid, self.cfg.seg_size
         idx = min(max(int(idx), 0), s.chunk_count(bid) - 1)
         before = self.book
@@ -173,10 +175,10 @@ class Room:
                               'ord': s.chapter_ord(bid, new_max), 'total': s.total_chapters(bid),
                               'cur_chapter': s.chapter_no(bid, idx)})
         seg_now = sk.seg_of(s, bid, idx, size)
-        crossing = prev_cur >= 0 and sk.seg_of(s, bid, prev_cur, size) + 1 == seg_now
-        waiting = seg_now >= 1 and s.echo_state(bid, seg_now - 1) == 'waiting'
-        echo = self.echo_pending(idx) if (crossing or waiting) else None
-        return {'idx': idx, 'chapter': s.label(bid, idx), 'title': s.chunk(bid, idx)['title'], 'echo': echo}
+        if prev_cur >= 0 and sk.seg_of(s, bid, prev_cur, size) + 1 == seg_now and s.echo_state(bid, seg_now - 1) is None:
+            s.mark_echo_waiting(bid, seg_now - 1)
+        return {'idx': idx, 'chapter': s.label(bid, idx), 'title': s.chunk(bid, idx)['title'],
+                'echo': self.echo_pending(idx)}
 
     # ── 她的笔迹 ─────────────────────────────────────────
     def keep_note(self, note='', excerpt='', idx=None):
@@ -193,39 +195,53 @@ class Room:
         return any(r['role'] == 'user' and r['content'] != ECHO_MSG
                    for r in complete_pairs(self.store.talk_rows(self.bid, lo=rng[0], hi=rng[1])))
 
+    def _spans(self, segs):
+        """几段的章号范围；中间断开的分开写。"""
+        s, bid, size = self.store, self.bid, self.cfg.seg_size
+        runs = []
+        for g in sorted(segs):
+            if runs and runs[-1][1] == g - 1:
+                runs[-1][1] = g
+            else:
+                runs.append([g, g])
+        return '、'.join(s.span(bid, sk.seg_range(s, bid, a, size)[0], sk.seg_range(s, bid, b, size)[1]) for a, b in runs)
+
     def echo_pending(self, idx=None):
-        """她在第 s 段时，第 s-1 段还没回顾过，就返回那一段。三条规矩：
+        """欠着的回头看。她读完一段、翻进下一段时，那一段就记成欠着；三条规矩决定还叫不叫：
 
         - 有记下来、没跟我聊过的批注 → 回头说那些；
         - 一条都没有、这一段里也没说过话 → 也叫我一次，让我知道她读到哪了；
-        - 一条都没有、但这一段里说过话 → 不叫，我已经知道她在哪，这一段记成回过。
+        - 一条都没有、但这一段里说过话（或者记下的都已经跟我聊过了）→ 不叫，我已经知道她在哪，记成回过。
+        欠着好几段的（前一次没回成），并成一次。返回 None，或者 {'seg', 'segs', 'span', 'notes', ...}。
         """
         s, bid, size = self.store, self.bid, self.cfg.seg_size
         seg = sk.seg_of(s, bid, self.cur if idx is None else int(idx), size)
-        if seg < 1:
+        segs, notes = [], []
+        for g in s.waiting_segs(bid, below=seg):
+            rng = sk.seg_range(s, bid, g, size)
+            fresh = self._seg_notes(rng) if rng else []
+            if fresh:
+                segs.append(g)
+                notes += fresh
+            elif not rng or self._seg_talked(rng) or s.notes(bid, author='her', lo=rng[0], hi=rng[1]):
+                s.mark_echoed(bid, g, None)
+            else:
+                segs.append(g)
+        if not segs:
             return None
-        state = s.echo_state(bid, seg - 1)
-        rng = sk.seg_range(s, bid, seg - 1, size)
-        if state == 'done' or not rng:
-            return None
-        notes = self._seg_notes(rng)
-        if not notes and self._seg_talked(rng):
-            s.mark_echoed(bid, seg - 1, None)
-            return None
-        if state is None:
-            s.mark_echo_waiting(bid, seg - 1)
-        return {'seg': seg - 1, 'from_idx': rng[0], 'to_idx': rng[1], 'span': s.span(bid, rng[0], rng[1]), 'notes': notes}
+        return {'seg': segs[-1], 'segs': segs, 'from_idx': sk.seg_range(s, bid, segs[0], size)[0],
+                'to_idx': sk.seg_range(s, bid, segs[-1], size)[1], 'span': self._spans(segs), 'notes': notes}
 
-    def _echo_block(self, seg, msgs):
-        """回顾那一轮的场景：骨架补到这一段末尾，加她这一段写下的话。一个字原文都不发。"""
+    def _echo_block(self, segs, msgs):
+        """回顾那一轮的场景：骨架补到这几段末尾，加她这几段里写下、还没跟我聊过的话。一个字原文都不发。"""
         s, bid, size = self.store, self.bid, self.cfg.seg_size
-        rng = sk.seg_range(s, bid, seg, size)
-        if not rng:
+        ranges = [r for r in (sk.seg_range(s, bid, g, size) for g in segs) if r]
+        if not ranges:
             return ''
-        frame, _ = sk.outline_for(s, bid, rng[1] + 1, msgs, size)
+        frame, _ = sk.outline_for(s, bid, max(r[1] for r in ranges) + 1, msgs, size)
         frame = frame.replace('；骨架只到这一章开头为止', '，这一轮没有原文')
-        span = s.span(bid, rng[0], rng[1])
-        notes = self._seg_notes(rng)
+        span = self._spans(segs)
+        notes = [n for r in ranges for n in self._seg_notes(r)]
         if notes:
             lines = ['--- 她读完了%s，这一段里写下的话 ---' % span]
             for n in notes:
@@ -311,8 +327,9 @@ class Room:
         k = self.cur
         b, chunk = self.book, s.chunk(bid, k)
         if echo is not None:
-            rng = sk.seg_range(s, bid, int(echo), cfg.seg_size)
-            if not rng or rng[1] >= int(b['max_chunk']):
+            echo_segs = sorted(set(s.waiting_segs(bid, below=int(echo))) | {int(echo)})   # 更早没回成的并进来
+            ends = [r[1] for r in (sk.seg_range(s, bid, g, cfg.seg_size) for g in echo_segs) if r]
+            if not ends or max(ends) >= int(b['max_chunk']):
                 raise ValueError('她还没读完这一段，不能回头看')    # 不然骨架会越过她读到的地方
         note = s.note(bid, note_id) if note_id is not None else None
         if note and note['author'] != 'her':
@@ -323,9 +340,9 @@ class Room:
         head = '《%s》· %s' % (b['title'], b['author'] or '佚名')
         turn = Turn(messages=msgs, payload='', user_content=message, idx=k, focus=focus, note_id=note_id)
         if echo is not None:
-            turn.kind, turn.echo_seg = 'echo', int(echo)
+            turn.kind, turn.echo_seg, turn.echo_segs = 'echo', int(echo), tuple(echo_segs)
             scene = ('[陪读室·%s]\n%s刚读完一段，回头看看她这一段里写下的话。这里是一间单独的小屋，这里聊的不进主对话。\n\n'
-                     % (head, cfg.reader)) + self._echo_block(int(echo), msgs)
+                     % (head, cfg.reader)) + self._echo_block(echo_segs, msgs)
         else:
             said = message + '\n' + focus
             outline, turn.outline = sk.outline_for(s, bid, k, msgs, cfg.seg_size, mention=said)
@@ -386,7 +403,7 @@ class Room:
             discussed['note_id'] = turn.note_id
         ids = self.store.commit_turn(
             self.bid, turn.idx, turn.user_content, turn.payload, visible, clean if clean != visible else '',
-            margins=margins if self.cfg.margin_notes else (), discussed=discussed, echo_seg=turn.echo_seg)
+            margins=margins if self.cfg.margin_notes else (), discussed=discussed, echo_segs=turn.echo_segs)
         out.update(committed=True, reply=visible, margins=margins, ids=ids)
         return out
 

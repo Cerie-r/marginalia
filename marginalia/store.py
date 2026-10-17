@@ -127,7 +127,15 @@ class Store:
         self.db = sqlite3.connect(path)
         self.db.row_factory = sqlite3.Row
         self.db.executescript(SCHEMA)
+        self._migrate()
         self._chmap = {}
+
+    def _migrate(self):
+        """旧书库补上后来加的列。"""
+        cols = {r[1] for r in self.db.execute('PRAGMA table_info(seg_echo)')}
+        if 'done' not in cols:
+            with self.db:
+                self.db.execute('ALTER TABLE seg_echo ADD COLUMN done INTEGER NOT NULL DEFAULT 1')
 
     def close(self):
         try:
@@ -238,14 +246,14 @@ class Store:
 
     # ── 对话账本 ─────────────────────────────────────────
     def commit_turn(self, bid, idx, user_content, user_payload, reply, reply_payload='',
-                    margins=(), discussed=None, echo_seg=None):
+                    margins=(), discussed=None, echo_segs=()):
         """一轮完整的对话，在同一个事务里落盘，要么全在，要么全不在：
 
         - 她的话（content 是她说的那句，payload 是这一轮真正发出去的全文）
         - 我的回答（content 是她看得见的那句，payload 是模型原样吐出、和 content 不同时才存）
         - margins：我留在回答末尾的记忆点 [(一句话, 原文摘录), ...]
         - discussed：{'excerpt': 她划的那句} 或 {'note_id': 她拿来聊的那条批注}——标成"聊过了"
-        - echo_seg：这一轮是第几段的回顾——标成"回过了"
+        - echo_segs：这一轮回顾了哪几段——标成"回过了"
         """
         user_content, reply = str(user_content or '').strip(), str(reply or '').strip()
         if not user_content or not reply:
@@ -270,9 +278,9 @@ class Store:
             if d.get('note_id') is not None:
                 self.db.execute("UPDATE notes SET discussed=1 WHERE id=? AND book_id=? AND author='her'",
                                 (int(d['note_id']), bid))
-            if echo_seg is not None:
+            for seg in echo_segs or ():
                 self.db.execute('INSERT OR REPLACE INTO seg_echo (book_id, seg, at_idx, created_at, done) VALUES (?,?,?,?,1)',
-                                (bid, int(echo_seg), idx, t))
+                                (bid, int(seg), idx, t))
         return u, a
 
     def talk_rows(self, bid, after_id=0, chunk=None, lo=None, hi=None):
@@ -328,6 +336,11 @@ class Store:
         with self.db:
             self.db.execute('INSERT OR IGNORE INTO seg_echo (book_id, seg, at_idx, created_at, done) VALUES (?,?,NULL,?,0)',
                             (bid, int(seg), now()))
+
+    def waiting_segs(self, bid, below=None):
+        """叫过、还没回成的段，从早到晚。"""
+        q, args = _filter('SELECT seg FROM seg_echo WHERE book_id=? AND done=0', [bid], [('seg<?', below)])
+        return [int(r[0]) for r in self.db.execute(q + ' ORDER BY seg', args)]
 
     # ── 骨架（写骨架的脚本用；读的时候走 skeleton.py）──────────────
     def add_outline(self, bid, idx, kind, content, resolved_idx=None):

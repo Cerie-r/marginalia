@@ -99,7 +99,7 @@ Compression: when the uncompressed conversation passes thirty lines (one exchang
 
 - notes she kept and never talked over with me — when she crosses the line, I look back and say one thing, without a single word of the original text;
 - no notes, and we didn't talk during those ten chapters — I'm still called once, so I know where she is;
-- no notes, but we did talk — no call; I already know where she is.
+- no notes, but we did talk (or every note she kept there has already been talked over with me) — no call; I already know where she is.
 
 **⑥ She closes the book.** The me who just read with her writes a note to the me in the main conversation: which chapters, what we talked about, what she highlighted, no spoilers. The note doesn't enter the book's conversation history. At home a note is also written after two idle hours or six hours of continuous reading; here there is just `close()`, and when to call it is up to you.
 
@@ -162,7 +162,7 @@ An anchor answers exactly one question: is this content still in this turn's con
 ## The ledger: complete turns only
 
 - A reply is stored only if it ended normally (`end_turn` / `max_tokens`) and still has words after the markers are stripped; refusals, broken streams and half replies are treated as if the turn never happened.
-- Her words, my reply, my margin notes, "this note has been talked over" and "this segment has been looked back on" are written in one transaction: all or nothing. A look-back that didn't go through is offered again when she turns another page in the next segment; segments she skipped over by jumping don't count as read, and aren't looked back on.
+- Her words, my reply, my margin notes, "this note has been talked over" and "this segment has been looked back on" are written in one transaction: all or nothing. A look-back that didn't go through is offered again on her next page turn; if it still hasn't gone through when she finishes the following segment, the two are folded into one, so nothing she kept is lost. Segments she skipped over by jumping don't count as read, and aren't looked back on.
 - When she brings up a kept note (`note_id`), its sentence and what she wrote are put in front of me; if it was highlighted in this very chapter, it counts as highlighting it again.
 - Rebuilding the history only accepts adjacent, complete "her line → my line" pairs; orphaned replies and lines that never got an answer stay in the ledger but don't enter the next turn.
 - If the model writes its thinking as literal `<thinking>` tags in the text, they are stripped before storing.
@@ -223,7 +223,7 @@ A few more things changed for this release:
 - Anchors record which base they were built on and which chapters they skipped because the text was present; "how far the skeleton has been delivered" is computed by walking the anchors in order, not by taking the largest — a delta whose base was compressed away doesn't count, and neither does an anchor whose skipped chapters' text is gone.
 - Each compression produces one merged record, not just the newest stretch.
 - Splitting uses only the one heading style that occurs in the book, so a body line like "1. 去码头" is never taken for a chapter.
-- A look-back is marked done only when its turn is stored, and there can be no look-back on a segment she hasn't finished.
+- A look-back is marked done only when its turn is stored, an undelivered one is folded into the next, and there can be no look-back on a segment she hasn't finished.
 - The characters listed in a full snapshot are chosen by names mentioned in the skeleton lines and in what she said, without looking at this chapter's text at all.
 - The skeleton's footer gains one line about where it came from — "this skeleton was written by another model while reading the original".
 

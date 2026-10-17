@@ -56,7 +56,7 @@ class Claude:
 
     def __init__(self, model=None, api_key=None, max_tokens=2048, base_url=None, ttl='1h', timeout=300):
         self.model = model or os.environ.get('MARGINALIA_MODEL') or 'claude-sonnet-5-5'
-        self.api_key = api_key or os.environ.get('ANTHROPIC_API_KEY', '')
+        self.api_key = api_key if api_key is not None else os.environ.get('ANTHROPIC_API_KEY', '')
         self.base_url = (base_url or os.environ.get('ANTHROPIC_BASE_URL') or 'https://api.anthropic.com').rstrip('/')
         self.max_tokens = max_tokens
         self.ttl = ttl
@@ -86,7 +86,8 @@ class OpenAICompat:
     def __init__(self, model=None, api_key=None, base_url=None, timeout=120):
         self.base_url = (base_url or os.environ.get('MARGINALIA_HELPER_BASE_URL')
                          or 'https://api.deepseek.com/v1').rstrip('/')
-        self.api_key = api_key or os.environ.get('MARGINALIA_HELPER_API_KEY') or os.environ.get('DEEPSEEK_API_KEY', '')
+        self.api_key = api_key if api_key is not None else (
+            os.environ.get('MARGINALIA_HELPER_API_KEY') or os.environ.get('DEEPSEEK_API_KEY', ''))
         self.model = model or os.environ.get('MARGINALIA_HELPER_MODEL') or 'deepseek-chat'
         self.timeout = timeout
 

@@ -156,15 +156,15 @@ def main():
     ap.add_argument('--embed', action='store_true', help='给节点补向量（要配 MARGINALIA_EMBED_*）')
     a = ap.parse_args()
 
+    passes = not (a.list or a.export or a.embed) or a.resolve_only
+    helper = OpenAICompat() if passes else None
+    if passes and not helper.api_key:
+        sys.exit('没有 helper 的 key（MARGINALIA_HELPER_API_KEY 或 DEEPSEEK_API_KEY），什么都没动')
     store = Store(a.db)
     if a.list:
         for b in store.books():
             print('%s  《%s》 %s  %d 块' % (b['id'], b['title'], b['author'], b['chunk_count']))
         return
-    passes = not (a.export or a.embed) or a.resolve_only
-    helper = OpenAICompat() if passes else None
-    if passes and not helper.api_key:
-        sys.exit('没有 helper 的 key（MARGINALIA_HELPER_API_KEY 或 DEEPSEEK_API_KEY），什么都没动')
     if a.add:
         if not a.title:
             sys.exit('--add 要配 --title')

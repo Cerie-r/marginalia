@@ -1,6 +1,8 @@
 import json
+import os
 import threading
 import unittest
+from unittest import mock
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 from marginalia import llm
@@ -79,8 +81,12 @@ class Clients(unittest.TestCase):
             c.chat('s', [{'role': 'user', 'content': 'x'}])
         with self.assertRaises(llm.LLMError):
             llm.Claude(api_key='k', base_url='http://127.0.0.1:9').chat('s', [{'role': 'user', 'content': 'x'}])
-        with self.assertRaises(llm.LLMError):
-            llm.Claude(api_key='').chat('s', [])
+        with mock.patch.dict(os.environ, {'ANTHROPIC_API_KEY': 'from-env', 'DEEPSEEK_API_KEY': 'from-env'}):
+            with self.assertRaises(llm.LLMError):                         # 明说了空 key，就不去读环境变量
+                llm.Claude(api_key='', base_url=self.base).chat('s', [{'role': 'user', 'content': 'x'}])
+            with self.assertRaises(llm.LLMError):
+                llm.OpenAICompat(api_key='', base_url=self.base).complete('x', retry=0)
+        self.assertFalse([r for r in _Fake.seen if r['path'] == '/v1/messages' and 'from-env' in str(r['headers'])])
 
 
 if __name__ == '__main__':

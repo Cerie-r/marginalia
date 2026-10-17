@@ -205,6 +205,28 @@ class Echo(unittest.TestCase):
         self.assertTrue(room.echo(0)['committed'])
         self.assertIsNone(room.turn_page(7)['echo'])
 
+    def test_an_undelivered_look_back_folds_into_the_next(self):
+        room, _ = sample_room(seg_size=5)
+        self.read_through(room, 0, 2)
+        room.keep_note('灯字好怪', excerpt=LINE)
+        self.assertEqual(self.read_through(room, 3, 5)['echo']['seg'], 0)   # 欠着，没发
+        e = self.read_through(room, 6, 10)['echo']                          # 又读完一段：两段并成一次
+        self.assertEqual((e['segs'], e['span'], len(e['notes'])), ([0, 1], '第1章到第10章', 1))
+        out = room.echo(e['seg'])
+        self.assertIn('--- 她读完了第1章到第10章，这一段里写下的话 ---', out['turn'].payload)
+        self.assertIn('她写：灯字好怪', out['turn'].payload)
+        self.assertTrue(room.store.echoed(room.bid, 0) and room.store.echoed(room.bid, 1))
+        self.assertIsNone(room.turn_page(11)['echo'])
+
+    def test_notes_talked_over_from_the_next_segment(self):
+        room, _ = sample_room(seg_size=5)
+        self.read_through(room, 0, 2)
+        nid = room.keep_note('灯字好怪', excerpt=LINE)
+        self.read_through(room, 3, 5)                                       # 欠着第一段
+        room.say('想起第三章那条', note_id=nid)                              # 在第 6 章拿出来聊了
+        self.assertIsNone(room.turn_page(6)['echo'])                        # 不能再说她"一个字没记"
+        self.assertTrue(room.store.echoed(room.bid, 0))
+
     def test_cannot_look_back_on_a_segment_she_has_not_finished(self):
         room, _ = sample_room(seg_size=5)
         self.read_through(room, 0, 2)
