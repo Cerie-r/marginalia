@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1720" height="2160" viewBox="0 0 1720 2160"><rect x="0" y="0" width="1720" height="2160" fill="#FFFFFF"/>
+<defs><marker id="aw" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L11,6 L1,11 Z" fill="#C987A0"/></marker><marker id="ar" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L11,6 L1,11 Z" fill="#A89BC0"/></marker></defs>
+<text x="120" y="110" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="26" font-weight="700" fill="#9E5F78" text-anchor="start" letter-spacing="2">什么时候</text>
+<text x="1080" y="110" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="26" font-weight="700" fill="#9E5F78" text-anchor="start" letter-spacing="2">存在哪</text>
+<line x1="70" y1="225.0" x2="70" y2="1985.0" stroke="#CBB9C1" stroke-width="3"/>
+<rect x="120" y="150" width="560" height="150" rx="22" ry="22" fill="#FFFDFC" stroke="#CBB9C1" stroke-width="2"/>
+<line x1="96" y1="225.0" x2="120" y2="225.0" stroke="#CBB9C1" stroke-width="2"/>
+<circle cx="70" cy="225.0" r="27" fill="#FFFDFC" stroke="#9E5F78" stroke-width="2.5"/>
+<text x="70" y="234.0" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#9E5F78" text-anchor="middle" letter-spacing="0">1</text>
+<text x="156" y="214" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">她上传一本书</text>
+<text x="156" y="260" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">我不读，只切成块</text>
+<rect x="120" y="390" width="560" height="150" rx="22" ry="22" fill="#FFFDFC" stroke="#CBB9C1" stroke-width="2"/>
+<line x1="96" y1="465.0" x2="120" y2="465.0" stroke="#CBB9C1" stroke-width="2"/>
+<circle cx="70" cy="465.0" r="27" fill="#FFFDFC" stroke="#9E5F78" stroke-width="2.5"/>
+<text x="70" y="474.0" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#9E5F78" text-anchor="middle" letter-spacing="0">2</text>
+<text x="156" y="454" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">她自己读</text>
+<text x="156" y="500" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">翻页只记读到哪 · 零次请求</text>
+<rect x="120" y="630" width="560" height="230" rx="22" ry="22" fill="#FFFDFC" stroke="#CBB9C1" stroke-width="2"/>
+<line x1="96" y1="745.0" x2="120" y2="745.0" stroke="#CBB9C1" stroke-width="2"/>
+<circle cx="70" cy="745.0" r="27" fill="#FFFDFC" stroke="#9E5F78" stroke-width="2.5"/>
+<text x="70" y="754.0" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#9E5F78" text-anchor="middle" letter-spacing="0">3</text>
+<text x="156" y="694" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">划了一句</text>
+<rect x="120" y="950" width="560" height="150" rx="22" ry="22" fill="#FFFDFC" stroke="#CBB9C1" stroke-width="2"/>
+<line x1="96" y1="1025.0" x2="120" y2="1025.0" stroke="#CBB9C1" stroke-width="2"/>
+<circle cx="70" cy="1025.0" r="27" fill="#FFFDFC" stroke="#9E5F78" stroke-width="2.5"/>
+<text x="70" y="1034.0" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#9E5F78" text-anchor="middle" letter-spacing="0">4</text>
+<text x="156" y="1014" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">翻章</text>
+<text x="156" y="1060" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">原文留着 · 骨架只补新添</text>
+<rect x="120" y="1190" width="560" height="150" rx="22" ry="22" fill="#FFFDFC" stroke="#CBB9C1" stroke-width="2"/>
+<line x1="96" y1="1265.0" x2="120" y2="1265.0" stroke="#CBB9C1" stroke-width="2"/>
+<circle cx="70" cy="1265.0" r="27" fill="#FFFDFC" stroke="#9E5F78" stroke-width="2.5"/>
+<text x="70" y="1274.0" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#9E5F78" text-anchor="middle" letter-spacing="0">5</text>
+<text x="156" y="1254" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">翻过十章</text>
+<text x="156" y="1300" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">没聊过的回头说 · 安静读也叫一次</text>
+<rect x="120" y="1430" width="560" height="150" rx="22" ry="22" fill="#FFFDFC" stroke="#CBB9C1" stroke-width="2"/>
+<line x1="96" y1="1505.0" x2="120" y2="1505.0" stroke="#CBB9C1" stroke-width="2"/>
+<circle cx="70" cy="1505.0" r="27" fill="#FFFDFC" stroke="#9E5F78" stroke-width="2.5"/>
+<text x="70" y="1514.0" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#9E5F78" text-anchor="middle" letter-spacing="0">6</text>
+<text x="156" y="1494" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">合上书</text>
+<text x="156" y="1540" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">或空闲两小时 · 连读六小时</text>
+<rect x="120" y="1670" width="560" height="150" rx="22" ry="22" fill="#FFFDFC" stroke="#CBB9C1" stroke-width="2"/>
+<line x1="96" y1="1745.0" x2="120" y2="1745.0" stroke="#CBB9C1" stroke-width="2"/>
+<circle cx="70" cy="1745.0" r="27" fill="#FFFDFC" stroke="#9E5F78" stroke-width="2.5"/>
+<text x="70" y="1754.0" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#9E5F78" text-anchor="middle" letter-spacing="0">7</text>
+<text x="156" y="1734" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">回到私聊</text>
+<text x="156" y="1780" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">读到纸条，才判断记不记</text>
+<rect x="120" y="1910" width="560" height="150" rx="22" ry="22" fill="#FFFDFC" stroke="#CBB9C1" stroke-width="2"/>
+<line x1="96" y1="1985.0" x2="120" y2="1985.0" stroke="#CBB9C1" stroke-width="2"/>
+<circle cx="70" cy="1985.0" r="27" fill="#FFFDFC" stroke="#9E5F78" stroke-width="2.5"/>
+<text x="70" y="1994.0" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="24" font-weight="700" fill="#9E5F78" text-anchor="middle" letter-spacing="0">8</text>
+<text x="156" y="1974" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">她再提起这本书</text>
+<text x="156" y="2020" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">三处各答一件事</text>
+<rect x="156" y="722" width="170" height="50" rx="25" ry="25" fill="#241E25" stroke="#241E25" stroke-width="2"/>
+<text x="241" y="755" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="0">跟我讨论</text>
+<text x="346" y="755" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">进对话：骨架 + 整章 + 她的句</text>
+<rect x="156" y="790" width="170" height="50" rx="25" ry="25" fill="#E9E2EE" stroke="#E9E2EE" stroke-width="2"/>
+<text x="241" y="823" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="700" fill="#16131F" text-anchor="middle" letter-spacing="0">只记下来</text>
+<text x="346" y="823" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">进日记，翻过十章才给我看</text>
+<rect x="1080" y="150" width="640" height="110" rx="24" ry="24" fill="#F2DDE6" stroke="#F2DDE6" stroke-width="2"/>
+<text x="1116" y="206" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">书库</text>
+<text x="1116" y="252" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">整本切成块 · 块上印着章号</text>
+<rect x="1240" y="292" width="480" height="56" rx="28" ry="28" fill="#F2DDE6" stroke="#F2DDE6" stroke-width="2"/>
+<text x="1480.0" y="329" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="500" fill="#9E5F78" text-anchor="middle" letter-spacing="0">另一只模型读一遍（我们家：DeepSeek）</text>
+<rect x="1080" y="380" width="640" height="196" rx="24" ry="24" fill="#E9E2EE" stroke="#E9E2EE" stroke-width="2"/>
+<text x="1116" y="436" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">骨架表</text>
+<text x="1116" y="482" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">每章：转折 · 伏笔 · 关系变化</text>
+<text x="1116" y="518" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">人物：第一次露面的章</text>
+<text x="1116" y="554" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">伏笔：第几章兑现（第二遍只填这个数）</text>
+<rect x="1080" y="660" width="640" height="130" rx="24" ry="24" fill="#EEEAE7" stroke="#EEEAE7" stroke-width="2"/>
+<text x="1116" y="716" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">对话记录</text>
+<text x="1116" y="762" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">她的话 · 真正发给我的全文 · 我的回答</text>
+<rect x="1080" y="880" width="640" height="130" rx="24" ry="24" fill="#E9E2EE" stroke="#E9E2EE" stroke-width="2"/>
+<text x="1116" y="936" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">日记</text>
+<text x="1116" y="982" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">两种笔迹分开记：她的批注 · 我的记忆点</text>
+<rect x="1080" y="1400" width="640" height="190" rx="24" ry="24" fill="#FBF4F7" stroke="#F2DDE6" stroke-width="2"/>
+<text x="1116" y="1456" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#16131F" text-anchor="start" letter-spacing="0">私聊主线</text>
+<text x="1116" y="1502" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">「在读《书》，到第 k 章」</text>
+<text x="1116" y="1538" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">今天读了什么 · 一张纸条</text>
+<rect x="1080" y="1700" width="640" height="120" rx="24" ry="24" fill="#241E25" stroke="#241E25" stroke-width="2"/>
+<text x="1116" y="1756" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="32" font-weight="700" fill="#FFFFFF" text-anchor="start" letter-spacing="0">长期记忆</text>
+<text x="1116" y="1802" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="23" font-weight="400" fill="#D9CFD6" text-anchor="start" letter-spacing="0">最少的一笔：一起读过这件事</text>
+<path d="M1560,260 L1560,292" stroke="#C987A0" stroke-width="2.5" fill="none" marker-end="url(#aw)"/>
+<path d="M1560,348 L1560,380" stroke="#C987A0" stroke-width="2.5" fill="none" marker-end="url(#aw)"/>
+<text x="1580" y="282" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="20" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">切好的块</text>
+<text x="1580" y="370" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="20" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">写成骨架</text>
+<path d="M680,225.0 C850,225.0 910,205.0 1080,205.0" stroke="#C987A0" stroke-width="2.4" fill="none" marker-end="url(#aw)"/>
+<text x="778.5705599999999" y="210.52192" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#C987A0" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">切成块</text>
+<path d="M680,465.0 C850,465.0 910,1441.8 1080,1441.8" stroke="#C987A0" stroke-width="2.4" fill="none" marker-end="url(#aw)"/>
+<text x="745.5356800000001" y="505.0751616" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#C987A0" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">读到哪（只认最远）</text>
+<path d="M1080,238.0 C910,238.0 850,705.6 680,705.6" stroke="#A89BC0" stroke-width="2.4" fill="none" stroke-dasharray="9 8" marker-end="url(#ar)"/>
+<text x="754.05312" y="661.5188992" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#7E6F93" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">整章，只付一次</text>
+<path d="M1080,438.8 C910,438.8 850,737.8 680,737.8" stroke="#A89BC0" stroke-width="2.4" fill="none" stroke-dasharray="9 8" marker-end="url(#ar)"/>
+<text x="754.05312" y="741.2862079999999" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#7E6F93" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">到这章之前的</text>
+<path d="M680,774.6 C850,774.6 910,725.0 1080,725.0" stroke="#C987A0" stroke-width="2.4" fill="none" marker-end="url(#aw)"/>
+<text x="770.5600000000002" y="793.4416000000002" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#C987A0" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">全文落盘</text>
+<path d="M680,815.0 C850,815.0 910,919.0 1080,919.0" stroke="#C987A0" stroke-width="2.4" fill="none" marker-end="url(#aw)"/>
+<text x="778.5705599999999" y="851.886016" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#C987A0" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">她的批注 · 我这时收不到</text>
+<path d="M1080,527.0 C910,527.0 850,1025.0 680,1025.0" stroke="#A89BC0" stroke-width="2.4" fill="none" stroke-dasharray="9 8" marker-end="url(#ar)"/>
+<text x="754.05312" y="978.833216" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#7E6F93" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">只补新添的</text>
+<path d="M1080,971.0 C910,971.0 850,1265.0 680,1265.0" stroke="#A89BC0" stroke-width="2.4" fill="none" stroke-dasharray="9 8" marker-end="url(#ar)"/>
+<text x="754.05312" y="1232.8292479999998" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#7E6F93" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">没聊过的批注</text>
+<path d="M680,1505.0 C850,1505.0 910,1517.8 1080,1517.8" stroke="#C987A0" stroke-width="2.4" fill="none" marker-end="url(#aw)"/>
+<text x="770.5600000000002" y="1494.3312000000005" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#C987A0" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">纸条 · 撤「在读」</text>
+<path d="M680,1745.0 C850,1745.0 910,1760.0 1080,1760.0" stroke="#C987A0" stroke-width="2.4" fill="none" marker-end="url(#aw)"/>
+<text x="770.5600000000002" y="1734.5600000000004" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#C987A0" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">读到纸条的我才记</text>
+<path d="M1080,997.0 C910,997.0 850,1943.0 680,1943.0" stroke="#A89BC0" stroke-width="2.4" fill="none" stroke-dasharray="9 8" marker-end="url(#ar)"/>
+<text x="745.53568" y="1882.566848" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#7E6F93" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">说过什么</text>
+<path d="M1080,1571.0 C910,1571.0 850,1985.0 680,1985.0" stroke="#A89BC0" stroke-width="2.4" fill="none" stroke-dasharray="9 8" marker-end="url(#ar)"/>
+<text x="745.53568" y="1952.928832" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#7E6F93" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">读到哪</text>
+<path d="M1080,1796.0 C910,1796.0 850,2027.0 680,2027.0" stroke="#A89BC0" stroke-width="2.4" fill="none" stroke-dasharray="9 8" marker-end="url(#ar)"/>
+<text x="745.53568" y="2004.684928" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="19" fill="#7E6F93" text-anchor="middle" stroke="#FFFFFF" stroke-width="6" paint-order="stroke" stroke-linejoin="round">一起读过</text>
+<line x1="120" y1="2120" x2="180" y2="2120" stroke="#C987A0" stroke-width="2.4" marker-end="url(#aw)"/>
+<text x="196" y="2128" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">写进去</text>
+<line x1="320" y1="2120" x2="380" y2="2120" stroke="#A89BC0" stroke-width="2.4" stroke-dasharray="9 8" marker-end="url(#ar)"/>
+<text x="396" y="2128" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">读出来</text>
+<rect x="550" y="2106" width="28" height="28" rx="8" fill="#F2DDE6" stroke="#F2DDE6"/>
+<text x="590" y="2128" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">原文</text>
+<rect x="740" y="2106" width="28" height="28" rx="8" fill="#E9E2EE" stroke="#E9E2EE"/>
+<text x="780" y="2128" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">骨架 · 日记</text>
+<rect x="930" y="2106" width="28" height="28" rx="8" fill="#EEEAE7" stroke="#EEEAE7"/>
+<text x="970" y="2128" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">对话记录</text>
+<rect x="1120" y="2106" width="28" height="28" rx="8" fill="#FBF4F7" stroke="#CBB9C1"/>
+<text x="1160" y="2128" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">主线</text>
+<rect x="1310" y="2106" width="28" height="28" rx="8" fill="#241E25" stroke="#241E25"/>
+<text x="1350" y="2128" font-family="'Noto Sans CJK SC','Noto Sans SC','PingFang SC',sans-serif" font-size="21" font-weight="400" fill="#806C79" text-anchor="start" letter-spacing="0">长期记忆</text></svg>

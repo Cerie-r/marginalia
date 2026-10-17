@@ -1,0 +1,42 @@
+{
+  "book": "雾港来信",
+  "note": "《雾港来信》的骨架，照 scripts/write_skeleton.py 的格式手写。idx 是块号（从 0 数）；这本书一章一块，块 6 印的是「第六章」，切书时顺成了第 7 章。",
+  "nodes": [
+    {"idx": 0, "kind": "turn", "content": "邮包里出现一封寄给北岬灯塔守灯人林海生的信，而灯塔已经空了十一年。", "resolved_idx": null},
+    {"idx": 0, "kind": "seed", "content": "那封信没有寄信人地址，邮戳却盖的是雾港本地。", "resolved_idx": 9},
+    {"idx": 1, "kind": "turn", "content": "陈婶讲起林海生：独自守灯三十年，十一年前风暴夜后被发现死在塔下。", "resolved_idx": null},
+    {"idx": 1, "kind": "seed", "content": "陈婶说林海生没有家人，只有一个常开船给他送米送油的老朋友。", "resolved_idx": 9},
+    {"idx": 1, "kind": "seed", "content": "阿雾问起守灯人，老周推说雾要散了起身开船，可那天下午并没有班次。", "resolved_idx": 9},
+    {"idx": 2, "kind": "turn", "content": "一周后第二封信到了：同样的笔迹、同样寄给灯塔、同样盖着本地邮戳。", "resolved_idx": null},
+    {"idx": 2, "kind": "seed", "content": "信封上的“灯”字写法特别，火字旁写成规规矩矩的三个点。", "resolved_idx": 8},
+    {"idx": 2, "kind": "bond", "content": "小满说天亮前见过有人往邮筒塞信，主动当了阿雾的助手。", "resolved_idx": null},
+    {"idx": 3, "kind": "turn", "content": "阿雾和小满凌晨守在邮筒边，看见一个穿灰雨衣的人投信，被逗号惊跑。", "resolved_idx": null},
+    {"idx": 3, "kind": "seed", "content": "邮筒底座旁落着一截带海水腥味的橙色麻绳头。", "resolved_idx": 7},
+    {"idx": 4, "kind": "seed", "content": "空了十一年的灯塔挂着一把上过油的新锁，扶手和灯室玻璃都没有灰。", "resolved_idx": 10},
+    {"idx": 5, "kind": "turn", "content": "奶奶说十一年来每个星期都有一封这样的信，全收在旧分拣柜第七格。", "resolved_idx": null},
+    {"idx": 5, "kind": "bond", "content": "奶奶把第七格的铜钥匙交给阿雾，却没说为什么一直瞒着她。", "resolved_idx": null},
+    {"idx": 5, "kind": "seed", "content": "奶奶说有些信不是寄给收信人的，是寄给寄信人自己的，没再解释。", "resolved_idx": 11},
+    {"idx": 6, "kind": "turn", "content": "第七格里塞满了五百多封信，最早一封寄于十一年前风暴后的那个星期。", "resolved_idx": null},
+    {"idx": 6, "kind": "seed", "content": "一封信封口松了，阿雾瞥见一行字：“海生，今天雾很大，我又没开船。”", "resolved_idx": 9},
+    {"idx": 7, "kind": "bond", "content": "阿雾搭老周的渡船去对岸，两人第一次聊了很久。", "resolved_idx": null},
+    {"idx": 7, "kind": "turn", "content": "阿雾认出渡船上拴缆的正是那种橙色麻绳，但什么也没说。", "resolved_idx": null},
+    {"idx": 8, "kind": "turn", "content": "阿雾在渡船登记本里看到老周写的“灯”字，火字旁也是三个点。", "resolved_idx": null},
+    {"idx": 8, "kind": "seed", "content": "登记本上十一年前一月那页，只有一行被划掉又重写的“大风，停航”。", "resolved_idx": 9},
+    {"idx": 9, "kind": "turn", "content": "老周承认信是他写的：风暴那夜林海生呼叫他送零件，他没敢开船。", "resolved_idx": null},
+    {"idx": 9, "kind": "turn", "content": "十一年来老周每周给林海生写一封信，开头总是“我又没开船”。", "resolved_idx": null},
+    {"idx": 9, "kind": "bond", "content": "阿雾答应老周，那些信她会替林海生收好，一封都不会丢。", "resolved_idx": null},
+    {"idx": 10, "kind": "turn", "content": "老周带阿雾和小满上灯塔，原来十一年来他每个月都来上油、擦灯。", "resolved_idx": null},
+    {"idx": 10, "kind": "turn", "content": "三人把老灯擦干净，老周用火柴和煤油把它重新点亮。", "resolved_idx": null},
+    {"idx": 11, "kind": "turn", "content": "这一周没有寄给灯塔的信，只有一张寄给邮局的明信片：“今天开船了。”", "resolved_idx": null},
+    {"idx": 11, "kind": "bond", "content": "阿雾把明信片钉在墙上，答应小满一年后把邮票给他。", "resolved_idx": null}
+  ],
+  "chars": [
+    {"idx": 0, "name": "阿雾", "note": "雾港邮局唯一的局长兼邮差，三个月前从奶奶手里接下邮局。"},
+    {"idx": 0, "name": "老周", "note": "渡船的船老大，六十多岁，每天早上从对岸把邮包运来。"},
+    {"idx": 0, "name": "逗号", "note": "邮局的黑猫，额头上一撮白毛像个逗号。"},
+    {"idx": 0, "name": "奶奶", "note": "阿雾的奶奶，邮局的前任局长，腿脚不好，搬去了山坡上的老房子。"},
+    {"idx": 1, "name": "陈婶", "note": "码头杂货铺的老板娘，雾港的事她都知道。"},
+    {"idx": 1, "name": "林海生", "note": "北岬灯塔的守灯人，十一年前冬天的风暴之后去世。"},
+    {"idx": 2, "name": "小满", "note": "住在坡下的十岁男孩，爱集邮，成了阿雾的小助手。"}
+  ]
+}
