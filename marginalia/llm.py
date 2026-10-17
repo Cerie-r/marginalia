@@ -33,7 +33,8 @@ def _post(url, headers, body, timeout):
             raw = r.read()
     except urllib.error.HTTPError as e:
         try:
-            detail = e.read().decode('utf-8', 'replace')[:600]
+            with e:                                          # 出错的响应也要关上，3.14 起不关会报 ResourceWarning
+                detail = e.read().decode('utf-8', 'replace')[:600]
         except Exception:
             detail = ''
         raise LLMError('HTTP %d: %s' % (e.code, detail)) from None
