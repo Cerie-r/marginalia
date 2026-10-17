@@ -1,0 +1,37 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.9', '3.10', '3.11', '3.12', '3.13', '3.14', '3.15']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python }}
+          allow-prereleases: true          # 最新的那个版本还没出正式版时，先用候选版
+
+      # 什么都不装，clone 下来就跑：守住"没有依赖"这句话
+      - name: 不装任何东西，跑测试
+        run: python -m unittest -v
+
+      # 再走 pip 那扇门：装上以后，在仓库外面也 import 得到
+      - name: pip install 以后也能用
+        working-directory: ${{ runner.temp }}
+        run: |
+          python -m pip install --disable-pip-version-check "$GITHUB_WORKSPACE"
+          python -c "import marginalia; assert 'site-packages' in marginalia.__file__, marginalia.__file__"
+          python -m pip uninstall -y marginalia
+          python -m pip install --disable-pip-version-check -e "$GITHUB_WORKSPACE"
+          python -c "import marginalia, os; assert marginalia.__file__.startswith(os.environ['GITHUB_WORKSPACE']), marginalia.__file__"

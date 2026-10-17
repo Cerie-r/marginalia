@@ -48,9 +48,11 @@ examples/sample_skeleton.json  its skeleton, written by hand in the same format 
 tests/                     python -m unittest; none of them touch the network
 docs/marginalia.pdf        the design note
 docs/diagram.svg           one picture: where things are stored, and when
+pyproject.toml             for pip install; nothing here needs it to run
+.github/workflows/tests.yml  on every push: the tests on 3.9 through 3.15, then an install
 ```
 
-Python 3.8 or later, no dependencies.
+Python 3.9 or later, no dependencies.
 
 ## Quick start
 
@@ -193,6 +195,8 @@ Our numbers at home:
 Someone else's home might look back every five chapters; any model will do, as long as it keeps "wording only up to that chunk".
 
 ## Wiring it into your own system
+
+Run `pip install -e .` in the repository and your own project can import it; or, without installing, copy the `marginalia/` folder over — it only uses the standard library.
 
 ```python
 from marginalia import Store, Room, Config, llm

@@ -46,9 +46,11 @@ examples/sample_skeleton.json  它的骨架，手写，格式和脚本写出来�
 tests/                     python -m unittest，一个都不联网
 docs/marginalia.pdf        设计稿
 docs/diagram.svg           一张图：存在哪，什么时候
+pyproject.toml             想 pip install 的话用它；这里的东西不装也都能跑
+.github/workflows/tests.yml  每次推送：3.9 到 3.15 各跑一遍测试，再装一遍
 ```
 
-Python 3.8 以上，没有依赖。
+Python 3.9 以上，没有依赖。
 
 ## 快速开始
 
@@ -191,6 +193,8 @@ python examples/read.py --live --db reading.db --book 书.txt --title 书名
 别人家五章也行；换哪只模型都行，守住"措辞只到该块为止"。
 
 ## 接进自己的系统
+
+在仓库里 `pip install -e .` 一下，自己的项目里就 import 得到；不想装，把 `marginalia/` 整个拷过去也一样，它只用标准库。
 
 ```python
 from marginalia import Store, Room, Config, llm

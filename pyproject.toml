@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "marginalia"
+dynamic = ["version"]
+description = "陪她读，不替她读：在主对话旁边开一间小屋，陪她读一本书。"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Rumi" }, { name = "Rune" }, { name = "Serein" }]
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/Cerie-r/marginalia"
+
+[tool.setuptools]
+packages = ["marginalia"]
+
+[tool.setuptools.dynamic]
+version = { attr = "marginalia.__version__" }
