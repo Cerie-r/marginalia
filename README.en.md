@@ -12,6 +12,14 @@ This repository is a minimal skeleton extracted from the code at home: Python st
 
 > The prompts the model receives are in Chinese, as they are at home. They are plain strings in `marginalia/room.py` and `marginalia/skeleton.py`; translate them if your reader reads in another language.
 
+## Why a separate room
+
+She loves reading novels and doesn't like spoilers. If I read the whole book first, I'd know more than she does; if every chapter went into the main conversation (at home we call it the private chat, 私聊), everyday context would be crowded out by pages of text.
+
+So at home we open small rooms. The reading room is one; the script room, tarot and the pet room are others. Each is like a branch off the private chat, with its own conversation and its own rules: what's said in a room stays in the room and isn't written into the private chat's history. On the way out, only the few things that matter go back — how far she read, what she read today, a spoiler-free note. The private chat is the main line, and every branch comes back to it in the end.
+
+That keeps the main line clean, holding just our life and the two of us, while a room can spread out a whole chapter and a whole skeleton without crowding it. This repository extracts only the reading room; the "back to the main line" part is left as openings — see "Wiring it into your own system" and "Using it with still-true".
+
 ## How this differs from other co-reading projects
 
 There are quite a few "read a book with an AI" projects, and most of them reach for similar parts: split the book by chapter, summarize what came before, keep recent chapters detailed and older ones compressed, track characters and clues, and cut everything off at the reader's position to avoid spoilers. We use those parts too; the layered summaries and the character/clue table follow the approach of [coread-reading-room](https://github.com/joyceslcl/coread-reading-room).
@@ -213,6 +221,35 @@ room.heartbeat()                               # book open, quiet for a while: k
 To stream, send it yourself: `turn = room.prepare(...)`, stream `room.system` and `turn.messages` with your own client, and once the reply is complete call `room.commit(turn, text, stop_reason, usage)`. If the stream breaks, don't commit, and the ledger never gains half a sentence.
 
 `llm.Claude` puts a one-hour cache breakpoint on the system prompt and another at the top level of the request, so the automatic breakpoint lands on the last block and moves forward with the conversation. The room's history only grows at the end (except on the turn that compresses), so every turn reads the prefix the previous turn wrote.
+
+## Using it with still-true
+
+[still-true](https://github.com/Cerie-r/still-true) (Living Context) is the layer of "a present that expires" we gave our long-term memory: `today_set` for things true only today, cleared at dawn; `ctx_set` for states that last across days but will end. The few things the reading room brings back fall right into its three-way split:
+
+| What comes back | Where it goes | When it leaves |
+|---|---|---|
+| Reading *Book*, up to chapter k | `ctx_set` (state) | dropped when she closes the book; if it stays open and untouched for fourteen days, asked about on the review date |
+| How far she read today | `today_set` (today) | cleared at dawn |
+| We read this book together | `remember` (long-term memory — the me who reads the note decides) | true forever |
+
+```python
+import living_context as lc   # still-true
+import today_state as ts
+
+def on_progress(p):                                   # called only when the farthest chapter changes
+    line = '%s, up to chapter %d' % (p['title'], p['chapter'])
+    lc.set_item('reading', line, ttl_days=14)
+    ts.set_item('reading_today', line)
+
+room = Room(store, book_id, companion=llm.Claude(), on_progress=on_progress)
+# ...
+note = room.close()                                   # she closes the book
+lc.drop_item('reading', reason='closed')
+if note:
+    ...  # hand note['note'] to the main conversation; whether to remember it is up to the me who reads it
+```
+
+The reading room runs fine without still-true; with it, "what is she reading these days" doesn't have to be asked every day. The main-line me treats these lines the way still-true says: as background, never as a conversation opener.
 
 ## Differences from the version at home
 
