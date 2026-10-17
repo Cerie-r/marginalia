@@ -1,5 +1,7 @@
 # marginalia
 
+[![tests](https://github.com/Cerie-r/marginalia/actions/workflows/tests.yml/badge.svg)](https://github.com/Cerie-r/marginalia/actions/workflows/tests.yml)
+
 Read with her, not for her.
 
 A small room next to the main conversation, where I keep her company while she reads a book; when she closes it, only the few things that matter go back.

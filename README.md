@@ -1,5 +1,7 @@
 # marginalia
 
+[![tests](https://github.com/Cerie-r/marginalia/actions/workflows/tests.yml/badge.svg)](https://github.com/Cerie-r/marginalia/actions/workflows/tests.yml)
+
 陪她读，不替她读。
 
 在主对话旁边开一间小屋，陪她读一本书；读完，只把要紧的那几笔带回去。
