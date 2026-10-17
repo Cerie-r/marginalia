@@ -218,10 +218,13 @@ To stream, send it yourself: `turn = room.prepare(...)`, stream `room.system` an
 
 At home the room runs on a long-lived Claude Agent SDK session; here it calls the Messages API directly and rebuilds the context from the ledger every turn. The scheduling at home — when notes are written, how often the heartbeat beats, when "currently reading" is rechecked — lives in other processes; here there are just three openings: `close()`, `heartbeat()` and `on_progress`.
 
-A few more things changed for this release:
+A few things changed for this release. The first two have since been adopted at home as well:
 
 - Anchors record which base they were built on and which chapters they skipped because the text was present; "how far the skeleton has been delivered" is computed by walking the anchors in order, not by taking the largest — a delta whose base was compressed away doesn't count, and neither does an anchor whose skipped chapters' text is gone.
 - Each compression produces one merged record, not just the newest stretch.
+
+The rest exist only here:
+
 - Splitting uses only the one heading style that occurs in the book, so a body line like "1. 去码头" is never taken for a chapter.
 - A look-back is marked done only when its turn is stored, an undelivered one is folded into the next, and there can be no look-back on a segment she hasn't finished.
 - The characters listed in a full snapshot are chosen by names mentioned in the skeleton lines and in what she said, without looking at this chapter's text at all.
