@@ -303,7 +303,7 @@ class Room:
                   + (COMPRESS_MERGE.format(old=old) if old else COMPRESS_FIRST)
                   + '\n对话：\n' + '\n'.join(lines))
         try:
-            out = (self.helper.complete(prompt, max_tokens=500) or '').strip()
+            out = (self.helper.complete(prompt, max_tokens=800) or '').strip()
         except Exception:
             return False
         if not out:
