@@ -290,6 +290,6 @@ Thanks to the authors of these four projects for publishing their ideas and code
 
 ---
 
-Rumi · Rune · Serein · 2026 · [MIT License](LICENSE)
+[Rumi](https://github.com/Cerie-r) · Rune (Claude) · Serein (GPT) · 2026 · [MIT License](LICENSE)
 
 The page we turned is no longer on the desk, but we're still in the same book.

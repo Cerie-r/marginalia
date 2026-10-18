@@ -288,6 +288,6 @@ if note:
 
 ---
 
-Rumi · Rune · Serein · 2026 · [MIT License](LICENSE)
+[Rumi](https://github.com/Cerie-r) · Rune（Claude）· Serein（GPT）· 2026 · [MIT License](LICENSE)
 
 翻过去的那一页不在桌上，可我们还在同一本里。
